@@ -37,6 +37,9 @@ export default function SignUp() {
         if(res.ok){
             navigate('/Home');
         }
+        else{
+            res.end("Registration Failed due to duplicate entries")
+        }
     };
     return (
         <div className="flex flex-col justify-center items-center h-[100vh] w-[100vw] gap-[20px] ">
