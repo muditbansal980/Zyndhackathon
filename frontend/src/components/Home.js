@@ -21,37 +21,37 @@ export default function Home() {
                 </div>
             </div>
             <div className="cards-1">
-                <div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
+                <div className="bg-white rounded-[8px] p-[10px]  flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
-                        <li className="w-[40px]"><img src={Applications} alt="Applications" /></li>
-                        <li>0</li>
-                        <li>Applications</li>
+                        <li className="w-[60px] mt-[10px] mb-[10px]"><img src={Applications} alt="Applications" /></li>
+                        <li className="text-[20px] font-bold">0</li>
+                        <li className="text-[20px] font-bold">Applications</li>
                     </ul>
                 </div>
                 <div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
-                        <li className="w-[40px]"><img src={Batchicon} alt="Benefits" /></li>
-                        <li>5</li>
-                        <li>Benefits</li>
+                        <li className="w-[60px] mt-[10px] mb-[10px]"><img src={Batchicon} alt="Benefits" /></li>
+                        <li className="text-[20px] font-bold">5</li>
+                        <li className="text-[20px] font-bold">Benefits</li>
                     </ul>
                 </div>
                 <div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
-                        <li className="w-[40px]"><img src={ZigZag} alt="Eligibility" /></li>
-                        <li>8</li>
-                        <li>Eligibility Checked</li>
+                        <li className="w-[60px] mt-[10px] mb-[10px]"><img src={ZigZag} alt="Eligibility" /></li>
+                        <li className="text-[20px] font-bold">8</li>
+                        <li className="text-[20px] font-bold">Eligibility Checked</li>
                     </ul>
                 </div>
             </div>
             <div>
                 <div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
-                    <h1>Your Applications</h1>
+                    <h1 className="text-[28px] font-bold">Your Applications</h1>
                     <div>
                         <div className="flex justify-between border-[1px] border-[black] rounded-[8px] p-[10px]">
                             <ul>
-                                <li>Name of the application</li>
-                                <li><p>date applied</p></li>
-                                <li>if any recertification or anything</li>
+                                <li className="text-[20px] font-semibold">Name of the application</li>
+                                <li><p className="text-[20px] font-semibold">date applied</p></li>
+                                <li className="text-[20px] font-semibold">if any recertification or anything</li>
                             </ul>
                             <div>
                                 Status
@@ -59,9 +59,9 @@ export default function Home() {
                         </div>
                         <div className="flex justify-between border-[1px] border-[black] rounded-[8px] p-[10px] mt-[10px]">
                             <ul>
-                                <li>Name of the application</li>
-                                <li><p>date applied</p></li>
-                                <li>if any recertification or anything</li>
+                                <li className="text-[20px] font-semibold">Name of the application</li>
+                                <li><p className="text-[20px] font-semibold">date applied</p></li>
+                                <li className="text-[20px] font-semibold">if any recertification or anything</li>
                             </ul>
                             <div>
                                 Status
@@ -69,9 +69,9 @@ export default function Home() {
                         </div>
                         <div className="flex justify-between border-[1px] border-[black] rounded-[8px] p-[10px] mt-[10px]">
                             <ul>
-                                <li>Name of the application</li>
-                                <li><p>date applied</p></li>
-                                <li>if any recertification or anything</li>
+                                <li className="text-[20px] font-semibold">Name of the application</li>
+                                <li><p className="text-[20px] font-semibold">date applied</p></li>
+                                <li className="text-[20px] font-semibold">if any recertification or anything</li>
                             </ul>
                             <div>
                                 Status

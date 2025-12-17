@@ -1,7 +1,7 @@
 
 import { NavLink } from "react-router-dom";
-import { useState} from "react";
-import { useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function SignUp() {
@@ -13,33 +13,39 @@ export default function SignUp() {
     const [role, setrole] = useState("")
     const [income, setincome] = useState("")
     const [college, setcollege] = useState("")
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-         e.preventDefault();   
-        const res = await fetch("https://zynd-hackathon.onrender.com/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password,
-                email: email,
-                role: role,
-                income: income,
-                college: college
-            })
-        });
+        try {
+            e.preventDefault();
+            const res = await fetch("https://zynd-hackathon.onrender.com/signup", {
+            // const res = await fetch("http://localhost:9005/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    email: email,
+                    role: role,
+                    income: income,
+                    college: college
+                })
+            });
 
-        const data = await res.json();
-        console.log("data", data);
-        if(res.ok){
-            navigate('/Home');
+            const data = await res.json();
+            // console.log("data", data);
+            if (res.ok) {
+                navigate('/Home');
+            }
+            else if (res.status === 400) {
+                alert("Username or Email already exists. Please choose a different one.");
+            }
+        } catch (error) {
+
+            console.error("Error during registration:", error);
         }
-        // else{
-        //     res.end("Registration Failed due to duplicate entries")
-        // }
     };
     return (
         <div className="flex flex-col justify-center items-center h-[100vh] w-[100vw] gap-[20px] ">
@@ -53,7 +59,7 @@ export default function SignUp() {
                         <input value={email} onChange={(e) => setemail(e.target.value)} type="email" className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" placeholder="Email" required />
                         <select value={role} onChange={(e) => { setrole(e.target.value); setDisplay(e.target.value) }} className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" required>
 
-                            <option value="" disabled  className="">Choose Role</option>
+                            <option value="" disabled className="">Choose Role</option>
                             <option onChange={(e) => setrole(e.target.value)} value="Student" className="bg-[white] text-[black]">Student</option>
                         </select>
                         {Display === "Student" && (
@@ -65,7 +71,7 @@ export default function SignUp() {
 
                     </div>
 
-                    <button onClick={handleSubmit} type="submit" className="bg-[#898af3] p-[10px] rounded-[10px]">Register</button>
+                    <button onClick={handleSubmit} type="submit" className="bg-[#898af3] p-[10px] rounded-[10px] hover:cursor-pointer">Register</button>
                     <p>Already have an account? <NavLink to="/Login" className="underline">Login</NavLink></p>
                 </div>
             </form>
