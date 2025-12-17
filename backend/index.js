@@ -13,6 +13,7 @@ app.use(cors());
 
 //Connection of mongoose
 mongoose
+    // .connect("mongodb://127.0.0.1:27017/database-name-zynd-hack")
     .connect(process.env.MONGO_URL)
     .then(() => console.log("Mongoose Connected"))
     .catch((err) => console.log("Mongoose Connection Failed", err))
@@ -55,6 +56,7 @@ const User = mongoose.model("user", userSchema)
 //Routes
 app.post("/signup",async (req,res)=>{
     const body = req.body
+    //printing the body to console 
     console.log(body)
     // console.log('signup request body:', req.body)
     if (!body.username || !body.password || !body.email || !body.role || !body.college || !body.income || !body){
@@ -70,6 +72,6 @@ app.post("/signup",async (req,res)=>{
     })
     return res.status(201).json({"Entry":"Registered"})
 })
-app.listen(9000, () => {
-    console.log("http://localhost:9000")
+app.listen(9005, () => {
+    console.log("http://localhost:9005")
 })
