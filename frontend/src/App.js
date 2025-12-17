@@ -5,7 +5,7 @@ import Benefits from "./components/Benefits"
 import MyApplications from "./components/MyApplications"
 import Profile from "./components/Profile"
 import InterpretLaw from "./components/InterpretLaw"
-import Footer from "./components/footer"
+import Footer from "./components/Footer"
 import Signup from "./Signup"
 import Onboarding from "./components2/onboarding"
 import Login from "./components2/Login";

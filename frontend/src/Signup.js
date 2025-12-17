@@ -17,7 +17,7 @@ export default function SignUp() {
 
     const handleSubmit = async (e) => {
          e.preventDefault();   
-        const res = await fetch("http://localhost:9000/signup", {
+        const res = await fetch("https://zynd-hackathon.onrender.com/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,9 +33,7 @@ export default function SignUp() {
         });
 
         const data = await res.json();
-        console.log(data);
-        console.log(res.status)
-        console.log(res) 
+        console.log("data", data);
         if(res.ok){
             navigate('/Home');
         }

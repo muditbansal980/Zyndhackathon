@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <div className="footer bg-[oklch(0.21_0.06_258.54)] grid grid-cols-3 grid-rows-2 mt-[40px] p-[30px] w-[100%] ">
             <div className="text-[white]">
-                <h className="font-bold">Let us help you</h>    
+                <h1 className="font-bold">Let us help you</h1>    
                 <ul>
                     <NavLink to="/Home"><li className="hover:cursor-pointer">Home</li></NavLink>
                     <NavLink to="/CheckEligibility"><li className="hover:cursor-pointer">Check Eligibility</li></NavLink>
@@ -16,7 +16,7 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="text-[white]">
-                <h className="font-bold hover:cursor-pointer">Terms & Conditions</h>
+                <h1 className="font-bold hover:cursor-pointer">Terms & Conditions</h1>
                 <ul>
                     <li className="hover:cursor-pointer">Legal</li>
                     <li className="hover:cursor-pointer">Terms</li>
@@ -24,14 +24,14 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="text-[white]">
-                <h className="font-bold hover:cursor-pointer">Some Important Links</h>
+                <h1 className="font-bold hover:cursor-pointer">Some Important Links</h1>
                 <ul>
-                    <li className=" hover:cursor-pointer"><a href="https://www.mygov.in/">MyGov.in</a></li>
+                    <li className =" hover:cursor-pointer"><a href="https://www.mygov.in/">MyGov.in</a></li>
                 </ul>
             </div>
             <div className="connect gap-[10px] col-span-3 justify-center items-center">
                 <div className="flex justify-center items-center">
-                    <h className="text-[white] m-[10px] font-bold">Connect with us</h>
+                    <h1 className="text-[white] m-[10px] font-bold">Connect with us</h1>
                 </div>
                 <div className="flex gap-[10px] justify-center items-center">
                     <img className="w-[32px] hover:cursor-pointer " src={Instagram} alt="instagram" />
