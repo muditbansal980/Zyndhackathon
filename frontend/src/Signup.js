@@ -34,7 +34,7 @@ export default function SignUp() {
                 })
             });
 
-            const data = await res.json();
+            // const data = await res.json();
             // console.log("data", data);
             if (res.ok) {
                 navigate('/Home');
