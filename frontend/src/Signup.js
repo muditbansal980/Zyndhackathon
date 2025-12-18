@@ -40,7 +40,7 @@ export default function SignUp() {
             if (res.ok) {
                 navigate('/Home');
             }
-            else if (res.status === 400) {
+            else if (res.status === 401) {
                 setError(true);
             }
         } catch (error) {
