@@ -100,7 +100,7 @@ app.post("/signup", async (req, res) => {
 
         // Handle duplicate username/email
         if (err.code === 11000) {
-            return res.status(400).json({ 
+            return res.status(401).json({ 
                 "Error": "Username or email already exists" 
             });
         }
