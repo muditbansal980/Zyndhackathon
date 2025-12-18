@@ -9,7 +9,6 @@ import Footer from "./components/Footer"
 import Signup from "./Signup"
 import Onboarding from "./components2/onboarding"
 import Login from "./components2/Login";
-
 // import Searchbox from "./components/Searchbox"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 

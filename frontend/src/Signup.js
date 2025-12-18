@@ -13,13 +13,14 @@ export default function SignUp() {
     const [role, setrole] = useState("")
     const [income, setincome] = useState("")
     const [college, setcollege] = useState("")
+    const [error, setError] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
             const res = await fetch("https://zynd-hackathon.onrender.com/signup", {
-            // const res = await fetch("http://localhost:9005/signup", {
+                // const res = await fetch("http://localhost:9005/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -40,10 +41,9 @@ export default function SignUp() {
                 navigate('/Home');
             }
             else if (res.status === 400) {
-                alert("Username or Email already exists. Please choose a different one.");
+                setError(true);
             }
         } catch (error) {
-
             console.error("Error during registration:", error);
         }
     };
@@ -75,6 +75,9 @@ export default function SignUp() {
                     <p>Already have an account? <NavLink to="/Login" className="underline">Login</NavLink></p>
                 </div>
             </form>
+            <div className={`bg-red-500 text-white p-4 rounded fixed top-0 ${error ? "block" : "hidden"}`}>
+                <h2>Username or contact already exists. Please try again with different credentials.</h2>
+            </div>
         </div >
     )
 }
