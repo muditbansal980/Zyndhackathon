@@ -15,7 +15,7 @@ app.use(cors());
 mongoose
     // .connect("mongodb://127.0.0.1:27017/database-name-zynd-hack")
     .connect(process.env.MONGO_URL)
-    .then(() => console.log("Mongoose     git log --oneline origin/main..mainConnected"))
+    .then(() => console.log("Mongoose Connected Successfully"))
     .catch((err) => console.log("Mongoose Connection Failed", err))
 
 // Schema
