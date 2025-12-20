@@ -76,7 +76,7 @@ export default function SignUp() {
                 </div>
             </form>
             <div className={`bg-red-500 text-white p-4 rounded fixed top-0 ${error ? "block" : "hidden"}`}>
-                <h2>Username or contact already exists. Please try again with different credentials.</h2>
+                <h2>Username or email already exists. Please try again with different credentials.</h2>
             </div>
         </div >
     )

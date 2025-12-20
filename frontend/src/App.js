@@ -47,7 +47,7 @@ function App() {
       element: <> <Onboarding /></>
     },
     {
-      path:"/Login",
+      path:"/login",
       element: <> <Login /></>
     }
   ])
