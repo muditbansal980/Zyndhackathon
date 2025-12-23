@@ -19,7 +19,7 @@ export default function SignUp() {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-            const res = await fetch("https://zynd-hackathon.onrender.com/signup", {
+            const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
                 // const res = await fetch("http://localhost:9005/signup", {
                 method: "POST",
                 headers: {
