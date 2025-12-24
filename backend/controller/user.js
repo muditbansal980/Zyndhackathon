@@ -47,7 +47,11 @@ async function handlelogin(req, res) {
         const sessionId = uuidv4();
         console.log("Session ID:", sessionId);
         setUser(sessionId, user);
-        res.cookie("uid", sessionId);
+         res.cookie("uid", sessionId,{
+            httpOnly: true,
+            secure:true,
+            sameSite:"none"
+    });
         return res.status(200).json({ "message": "Login successful" });
 
     } catch (error) {

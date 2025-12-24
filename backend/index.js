@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(cors());
 app.use(cors({
-  origin: ["https://zyndhackathon.vercel.app"],
+  origin: ["https://zyndhackathon.vercel.app","http://localhost:3000"],
   credentials: true
 }));
 

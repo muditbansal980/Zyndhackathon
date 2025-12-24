@@ -33,20 +33,13 @@ async function handlegetprofile(req, res) {
 //     }
 // }
 async function handlepostprofile(req, res) {
+    const profile = await Profile.find()
   try {
-    if (!req.user || !req.user._id) {
-      return res.status(401).json({ message: "Unauthorized" });
+    if (profile.some((prof) => prof.createdBy.toString() === req.user._id.toString())) {
+      return res.status(409).json({ profile: profile.find((prof) => prof.createdBy.toString() === req.user._id.toString())});
     }
-
-    // Check if profile exists for this user
-    let profile = await Profile.findOne({ createdBy: req.user._id });
-    if (profile) {
-      // Return existing profile instead of creating duplicate
-      return res.status(200).json(profile);
-    }
-
     // Create profile
-    profile = await Profile.create({
+    await Profile.create({
       username: req.user.username,
       password: req.user.password,
       email: req.user.email,
@@ -56,9 +49,6 @@ async function handlepostprofile(req, res) {
     return res.status(201).json(profile);
   } catch (err) {
     console.error("handlepostprofile error:", err);
-    if (err.code === 11000) {
-      return res.status(409).json({ message: "Profile already exists" });
-    }
     return res.status(500).json({ message: "Error creating profile" });
   }
 }
