@@ -19,8 +19,8 @@ export default function SignUp() {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-            const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
-                // const res = await fetch("http://localhost:9005/signup", {
+            // const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
+                const res = await fetch("http://localhost:9005/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -49,15 +49,15 @@ export default function SignUp() {
     };
     return (
         <div className="flex flex-col justify-center items-center h-[100vh] w-[100vw] gap-[20px] ">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="flex flex-col justify-center items-center gap-[20px] bg-[purple] text-[white] pb-[20px] rounded-[10px]">
                     <h1 className="w-[100%] bg-[#898af3] flex justify-center items-center p-[10px] rounded-tl-[10px] rounded-tr-[10px] text-[32px] font-bold">Sign Up</h1>
                     <div className="flex flex-col gap-[20px] p-[20px]">
 
-                        <input value={username} onChange={(e) => setusername(e.target.value)} type="text" className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" placeholder="Username" required />
-                        <input value={password} onChange={(e) => setpassword(e.target.value)} type="password" className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" placeholder="Password" required />
-                        <input value={email} onChange={(e) => setemail(e.target.value)} type="email" className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" placeholder="Email" required />
-                        <select value={role} onChange={(e) => { setrole(e.target.value); setDisplay(e.target.value) }} className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" required>
+                        <input name="username" value={username} onChange={(e) => setusername(e.target.value)} type="text" className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" placeholder="Username" required />
+                        <input name="password" value={password} onChange={(e) => setpassword(e.target.value)} type="password" className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" placeholder="Password" required />
+                        <input name="email" value={email} onChange={(e) => setemail(e.target.value)} type="email" className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" placeholder="Email" required />
+                        <select name="role" value={role} onChange={(e) => { setrole(e.target.value); setDisplay(e.target.value) }} className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" required>
 
                             <option value="" disabled className="">Choose Role</option>
                             <option onChange={(e) => setrole(e.target.value)} value="Student" className="bg-[white] text-[black]">Student</option>
@@ -71,7 +71,7 @@ export default function SignUp() {
 
                     </div>
 
-                    <button onClick={handleSubmit} type="submit" className="bg-[#898af3] p-[10px] rounded-[10px] hover:cursor-pointer">Register</button>
+                    <button type="submit" className="bg-[#898af3] p-[10px] rounded-[10px] hover:cursor-pointer">Register</button>
                     <p>Already have an account? <NavLink to="/Login" className="underline">Login</NavLink></p>
                 </div>
             </form>
