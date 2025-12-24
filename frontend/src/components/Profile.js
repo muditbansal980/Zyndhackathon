@@ -16,10 +16,16 @@ useEffect(() => {
         setProfileData({});
         return;
       }
+      if (postRes.status === 409) {
+        console.log("Profile already exists");
+        const profile = (await postRes.json()).profile;
+        setProfileData(profile);
+        return;
+      }
 
       if (postRes.ok) {
         const profile = await postRes.json();
-        setProfileData(profile || {});
+        setProfileData(profile);
         return;
       }
 
