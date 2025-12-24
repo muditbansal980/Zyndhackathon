@@ -1,6 +1,7 @@
 
 const User = require("../model/user.js");
-const Login = require("../model/login.js");
+const { v4: uuidv4 } = require('uuid');
+const {setUser} = require("../services/auth.js")
 
 //<------------------------Signup Handler-------------------->
 async function handlesignup(req, res) {
@@ -16,14 +17,14 @@ async function handlesignup(req, res) {
                 college: body.college,
                 income: body.income
             })
-            res.status(200).send("Signup successful")
+            res.status(200).json({ "message": "Signup successful" });
         }
         else if (user.some((user) => user.username === body.username || user.email === body.email)) {
-            res.status(401).send("User already exist")
+            res.status(401).json({ "message": "User already exist" });
         }
     }
     catch (error) {
-        res.send("Error in login", error)
+        res.json({ "message": "Error in login", error });
     }
 }
 async function handlelogin(req, res) {
@@ -32,32 +33,25 @@ async function handlelogin(req, res) {
 
         // 1️⃣ Check empty fields FIRST
         if (!password || !username || !email) {
-            return res.status(400).send("Please fill all the fields");
+            return res.status(400).json({ "message": "Please fill all the fields" });
         }
 
         // 2️⃣ Find user
-        const user = await User.findOne({ username, email });
+        const user = await User.findOne({ username, email,password });
 
         // 3️⃣ User not found
         if (!user) {
-            return res.status(401).send("User does not exist");
+            return res.status(401).json({ "message": "User does not exist" });
         }
-
-        // 4️⃣ Password check (IMPORTANT)
-        if (user.password !== password) {
-            return res.status(401).send("Invalid credentials");
-        }
-
         // 5️⃣ Success
-        await Login.create({
-            username: username,
-            password: password,
-            email: email,
-        });
-        return res.status(200).send("Login successful");
+        const sessionId= uuidv4();
+        console.log("Session ID:", sessionId);
+        setUser(sessionId,user);
+        res.cookie("uid", sessionId);
+        return res.status(200).json({ "message": "Login successful" });
 
     } catch (error) {
-        return res.status(500).send("Server error");
+        return res.status(500).json({ "message": "Server error" });
     }
 }
 
