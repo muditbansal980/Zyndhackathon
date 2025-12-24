@@ -1,17 +1,25 @@
 
 const User = require("../model/user.js");
-
+const Login = require("../model/login.js");
 
 //<------------------------Signup Handler-------------------->
 async function handlesignup(req, res) {
     const body = req.body;
     const user = await User.find()
     try {
-        if (user.some((user) => user.username === body.username || user.email === body.email)) {
-            res.status(200).send("Login successful")
+        if (user.some((user) => user.username !== body.username || user.email !== body.email)) {
+            await User.create({
+                username: body.username,
+                password: body.password,
+                email: body.email,
+                role: body.role,
+                college: body.college,
+                income: body.income
+            })
+            res.status(200).send("Signup successful")
         }
-        else if (user.some((user) => user.username !== body.username || user.email !== body.email)) {
-            res.status(401).send("User does not exist")
+        else if (user.some((user) => user.username === body.username || user.email === body.email)) {
+            res.status(401).send("User already exist")
         }
     }
     catch (error) {
@@ -41,6 +49,11 @@ async function handlelogin(req, res) {
         }
 
         // 5️⃣ Success
+        await Login.create({
+            username: username,
+            password: password,
+            email: email,
+        });
         return res.status(200).send("Login successful");
 
     } catch (error) {
