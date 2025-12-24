@@ -1,7 +1,7 @@
 
 const User = require("../model/user.js");
 const { v4: uuidv4 } = require('uuid');
-const {setUser} = require("../services/auth.js")
+const { setUser } = require("../services/auth.js")
 
 //<------------------------Signup Handler-------------------->
 async function handlesignup(req, res) {
@@ -37,16 +37,16 @@ async function handlelogin(req, res) {
         }
 
         // 2️⃣ Find user
-        const user = await User.findOne({ username, email,password });
+        const user = await User.findOne({ username, email, password });
 
         // 3️⃣ User not found
         if (!user) {
             return res.status(401).json({ "message": "User does not exist" });
         }
         // 5️⃣ Success
-        const sessionId= uuidv4();
+        const sessionId = uuidv4();
         console.log("Session ID:", sessionId);
-        setUser(sessionId,user);
+        setUser(sessionId, user);
         res.cookie("uid", sessionId);
         return res.status(200).json({ "message": "Login successful" });
 
