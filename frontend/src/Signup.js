@@ -1,6 +1,6 @@
 
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -20,7 +20,7 @@ export default function SignUp() {
         try {
             e.preventDefault();
             const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
-                // const res = await fetch("http://localhost:9005/signup", {
+            // const res = await fetch("http://localhost:9005/user/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -47,6 +47,11 @@ export default function SignUp() {
             console.error("Error during registration:", error);
         }
     };
+    useEffect(() => {
+        setTimeout(() => {
+            setError(false)
+        }, 2000)
+    }, [error])
     return (
         <div className="flex flex-col justify-center items-center h-[100vh] w-[100vw] gap-[20px] ">
             <form onSubmit={handleSubmit}>
