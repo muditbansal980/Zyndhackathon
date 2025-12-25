@@ -5,17 +5,35 @@
 import { useEffect, useState } from 'react';
 export default function Benefits() {
     const [benefitsData, setBenefitsData] = useState([]);
-    const [pagination, setpagination] = useState(0);
+    
+  //<-----------------------------Pagination-------------------------->  
+    let [pagination, setpagination] = useState(0);
     const pages = 20;
     const currentpages = benefitsData.slice((pagination), (pagination + pages));
     const [placeholder1, setPlaceholder1] = useState([{ BasicFilter: ["Select Category", "Select Ministry"] }, { Location: ["Select State", "Select State Category"] }, { Eligibility: ["Select Gender", "Select Age"] }]);
     function loadmore() {
-        setpagination(pagination + pages);
+        if (pagination >= 0) {
+            setpagination(pagination + pages);
+        }
+        else {
+            setpagination(pagination)
+        }
     }
+    function loadprev() {
+        if(pagination >0){
+        setpagination(pagination - pages);
+        }
+        if (pagination = 0){
+            console.log(" press next ")
+        }
+    }
+
+//<-------------------------_Fetching data from backend----------------------------------->
+
     useEffect(() => {
         async function fetchBenefits() {
             const res = await fetch("https://zynd-hackathon.onrender.com/benefits/schemes", {
-            // const res = await fetch("http://localhost:9005/benefits/schemes", {
+                // const res = await fetch("http://localhost:9005/benefits/schemes", {
                 method: "GET",
                 credentials: 'include', // <--- this
                 headers: {
@@ -26,7 +44,7 @@ export default function Benefits() {
             )
             if (res.status === 200) {
                 const data = await res.json();
-                console.log("Benefits data:", data);
+                // console.log("Benefits data:", data);
                 setBenefitsData(data);
             }
         }
@@ -35,15 +53,14 @@ export default function Benefits() {
     function handlefilter(e) {
         if (e.target.id === "basic-filters") {
             setPlaceholder1([{ BasicFilter: ["Select Category", "Select Ministry"] }])
-            console.log(placeholder1)
         }
         else if (e.target.id === "location") {
             setPlaceholder1([{ Location: ["Select State", "Select State Category"] }])
-            console.log(placeholder1)
+            
         }
         else if (e.target.id === "eligibility") {
             setPlaceholder1([{ Eligibility: ["Select Gender", "Select Age"] }])
-            console.log(placeholder1)
+           
         }
     }
     // console.log("Benefitsdata huhuhuhu:-", benefitsData);
@@ -75,58 +92,8 @@ export default function Benefits() {
             </div>
             <div className='max-h-[800px] overflow-y-auto bg-[lightgray] rounded-[10px] w-[90vw] max-w-[1630px]'>
                 <div className='font-bold text-[3rem] text-white flex justify-center'><h>SCHEMES</h></div>
+
                 <div className="cards grid gap-[20px] max-[640px]:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 auto-rows-auto w-[100%] p-[20px] ">
-
-                    {/* <div className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[400px] max-[1675px]:max-w-[400px] h-[400px]">
-                <div className="image h-[60%] overflow-y-hidden"><img className="h-full w-full object-cover" src={AtalYojana} alt="Atal Yojana" /></div>
-                <div className="description">
-                    <h1 className="text-[1.2rem]">Atal Pension Yojana</h1>
-                    <ul className="list-disc list-inside">
-                        <li>For 18 to 40 years old</li>
-                    </ul>
-                </div>
-                <div className="Apply flex justify-center items-center mt-[10px] absolute bottom-[10px] left-[40%]">
-                    <button className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Apply Now</button>
-                </div>
-            </div>
-            <div className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[400px] max-[1675px]:max-w-[400px]  h-[400px]">
-                <div className="image h-[60%] overflow-y-hidden border-[1px] border-[black] "><img className="h-full w-full object-cover" src={Ayushman} alt="Ayushman Bharat Yojana" /></div>
-                <div className="description">
-                    <h1 className="text-[1.2rem]">Ayushman Bharat Yojana</h1>
-                    <ul className="list-disc list-inside">
-                        <li>Health insurance for poor families</li>
-                    </ul>
-                </div>
-                <div className="Apply flex justify-center items-center mt-[10px] absolute bottom-[10px] left-[40%]">
-                    <button className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600 ">Apply Now</button>
-                </div>
-
-            </div>
-            <div className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[400px] max-[1675px]:max-w-[400px] h-[400px]">
-                <div className="image h-[60%] overflow-y-hidden"><img className="h-full w-full object-cover" src={Pradhanmantri} alt="Pradhan Mantri Awas Yojana" /></div>
-                <div className="description">
-                    <h1 className="text-[1.2rem]">Ayushman Bharat Yojana</h1>
-                    <ul className="list-disc list-inside">
-                        <li>Health insurance for poor families</li>
-                    </ul>
-                </div>
-                <div className="Apply flex justify-center items-center mt-[10px] absolute bottom-[10px] left-[40%]">
-                    <button className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Apply Now</button>
-                </div>
-            </div>
-            <div className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[400px] max-[1675px]:max-w-[400px] h-[400px]">
-                <div className="image h-[60%] overflow-y-hidden"><img className="h-full w-full object-cover" src={Mudrayojana} alt="Mudra Yojana" /></div>
-                <div className="description">
-                    <h1 className="text-[1.2rem]">Ayushman Bharat Yojana</h1>
-                    <ul className="list-disc list-inside">
-                        <li>Health insurance for poor families</li>
-                    </ul>
-                </div>
-                <div className="Apply flex justify-center items-center mt-[10px] absolute bottom-[10px] left-[40%]">
-                    <button className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Apply Now</button>
-                </div>
-            </div> */}
-
                     {currentpages.map((benefit, index) => (
                         <div key={index} className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[350px] max-[1675px]:max-w-[380px] min-h-[500px]">
                             <div className="image h-[50%] overflow-y-hidden border-[1px] border-black text-black"><img className="h-full w-full object-cover" src={benefit.imageUrl} alt={benefit.title} /></div>
@@ -134,19 +101,21 @@ export default function Benefits() {
                                 <h1 className="text-[1.5rem] font-bold ">{benefit.title}</h1>
                                 <p>{benefit.about}</p>
                             </div>
-                            <div className="Apply flex justify-center items-center mt-[30px] absolute bottom-[10px] left-[40%]">
+                            <div className="Apply flex justify-center items-center mt-[30px] absolute bottom-[10px] left-[37%] ">
                                 <button className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Apply Now</button>
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className="flex justify-center items-center mb-[20px] mt-[10px]">
-                    <button onClick={loadmore} className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Load Next {pages} schemes</button>
+{/* <--------------------------------------------------------Next and prev button for pagination--------------------------------------------> */}
+
+                <div className="flex gap-[10px] justify-center items-center mb-[20px] mt-[10px]">
+                    <button onClick={loadprev} className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Prev {pages} schemes</button>
+                    <button onClick={loadmore} className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Next {pages} schemes</button>
                 </div>
             </div>
 
         </div >
-
-
     )
 }
+
