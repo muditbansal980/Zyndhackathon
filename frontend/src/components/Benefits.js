@@ -66,7 +66,7 @@ export default function Benefits() {
                     </div>
                 </div>
             </div>
-            <div className='max-h-[800px] overflow-y-auto bg-[lightgray] rounded-[10px]'>
+            <div className='max-h-[800px] overflow-y-auto bg-[lightgray] rounded-[10px] w-[90%]'>
                 <div className='font-bold text-[3rem] text-white flex justify-center'><h>SCHEMES</h></div>
                 <div className="cards grid gap-[20px] max-[640px]:grid-cols-1 sm:grid-cols-2 max-[1464px]:grid-cols-3 lg:grid-cols-4   auto-rows-auto w-[100%] p-[20px] ">
 
