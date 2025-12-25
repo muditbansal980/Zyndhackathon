@@ -5,7 +5,7 @@ useEffect(() => {
   async function loadProfile() {
     try {
       const postRes = await fetch("https://zynd-hackathon.onrender.com/userprofile/profile", {
-    //   const postRes = await fetch("http://localhost:9005/userprofile/profile", {
+      // const postRes = await fetch("http://localhost:9005/userprofile/profile", {
         method: "POST",
         credentials: 'include',
         headers: { "Content-Type": "application/json" }
@@ -30,7 +30,8 @@ useEffect(() => {
       }
 
       // fallback: try GET
-      const getRes = await fetch("http://localhost:9005/userprofile/profile", {
+      // const getRes = await fetch("http://localhost:9005/userprofile/profile", {
+      const getRes = await fetch("https://zynd-hackathon.onrender.com/userprofile/profile", {
         method: "GET",
         credentials: 'include',
         headers: { "Content-Type": "application/json" }
