@@ -7,6 +7,7 @@ const userouter=require("./routes/user.js")
 const profilerouter =require("./routes/profile.js")
 const cookieParser = require("cookie-parser");
 const {authmiddleware} = require("./middleware/auth.js");
+const benefitsrouter=require("./routes/schemes.js")
 app.use(cookieParser());;
 //middle wares
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +25,7 @@ connectiondb(process.env.MONGO_URL).then(()=>console.log("MONGODB CONENCTED")).c
 //<----------------_Routes----------------->
 app.use("/user",userouter)
 app.use("/userprofile",authmiddleware,profilerouter)
-
+app.use("/benefits",benefitsrouter)
 
 app.listen(9005, () => {
     console.log("http://localhost:9005")
