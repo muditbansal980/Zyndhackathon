@@ -121,7 +121,7 @@ export default function Benefits() {
             </div> */}
 
                     {benefitsData.map((benefit, index) => (
-                        <div key={index} className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[400px] max-[1675px]:max-w-[400px] min-h-[500px]">
+                        <div key={index} className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[400px] max-[1675px]:max-w-[380px] min-h-[500px]">
                             <div className="image h-[50%] overflow-y-hidden border-[1px] border-black text-black"><img className="h-full w-full object-cover" src={benefit.imageUrl} alt={benefit.title} /></div>
                             <div className="description ">
                                 <h1 className="text-[1.5rem] font-bold ">{benefit.title}</h1>
