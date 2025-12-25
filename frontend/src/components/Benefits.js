@@ -8,7 +8,7 @@ export default function Benefits() {
     const [placeholder1, setPlaceholder1] = useState([{ BasicFilter: ["Select Category", "Select Ministry"] }, { Location: ["Select State", "Select State Category"] }, { Eligibility: ["Select Gender", "Select Age"] }]);
     useEffect(() => {
         async function fetchBenefits() {
-            const res = await fetch("https://zynd-hackathon.onrender.com/user/benefits", {
+            const res = await fetch("https://zynd-hackathon.onrender.com/benefits/schemes", {
             // const res = await fetch("http://localhost:9005/benefits/schemes", {
                 method: "GET",
                 credentials: 'include', // <--- this
