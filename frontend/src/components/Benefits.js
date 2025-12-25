@@ -5,7 +5,13 @@
 import { useEffect, useState } from 'react';
 export default function Benefits() {
     const [benefitsData, setBenefitsData] = useState([]);
+    const [pagination, setpagination] = useState(0);
+    const pages = 20;
+    const currentpages = benefitsData.slice((pagination), (pagination + pages));
     const [placeholder1, setPlaceholder1] = useState([{ BasicFilter: ["Select Category", "Select Ministry"] }, { Location: ["Select State", "Select State Category"] }, { Eligibility: ["Select Gender", "Select Age"] }]);
+    function loadmore() {
+        setpagination(pagination + pages);
+    }
     useEffect(() => {
         async function fetchBenefits() {
             const res = await fetch("https://zynd-hackathon.onrender.com/benefits/schemes", {
@@ -42,6 +48,7 @@ export default function Benefits() {
     }
     // console.log("Benefitsdata huhuhuhu:-", benefitsData);
     return (
+
         <div className="flex flex-col items-center justify-center">
             <div className="mb-[20px] mt-[20px]">
                 <h1 className="text-[2rem] font-bold text-white text-center">Find Benefits for you</h1>
@@ -66,9 +73,9 @@ export default function Benefits() {
                     </div>
                 </div>
             </div>
-            <div className='max-h-[800px] overflow-y-auto bg-[lightgray] rounded-[10px] w-[90%]'>
+            <div className='max-h-[800px] overflow-y-auto bg-[lightgray] rounded-[10px] w-[90vw] max-w-[1630px]'>
                 <div className='font-bold text-[3rem] text-white flex justify-center'><h>SCHEMES</h></div>
-                <div className="cards grid gap-[20px] max-[640px]:grid-cols-1 sm:grid-cols-2 max-[1464px]:grid-cols-3 lg:grid-cols-4   auto-rows-auto w-[100%] p-[20px] ">
+                <div className="cards grid gap-[20px] max-[640px]:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 auto-rows-auto w-[100%] p-[20px] ">
 
                     {/* <div className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[400px] max-[1675px]:max-w-[400px] h-[400px]">
                 <div className="image h-[60%] overflow-y-hidden"><img className="h-full w-full object-cover" src={AtalYojana} alt="Atal Yojana" /></div>
@@ -120,7 +127,7 @@ export default function Benefits() {
                 </div>
             </div> */}
 
-                    {benefitsData.map((benefit, index) => (
+                    {currentpages.map((benefit, index) => (
                         <div key={index} className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[350px] max-[1675px]:max-w-[380px] min-h-[500px]">
                             <div className="image h-[50%] overflow-y-hidden border-[1px] border-black text-black"><img className="h-full w-full object-cover" src={benefit.imageUrl} alt={benefit.title} /></div>
                             <div className="description ">
@@ -133,7 +140,13 @@ export default function Benefits() {
                         </div>
                     ))}
                 </div>
+                <div className="flex justify-center items-center mb-[20px] mt-[10px]">
+                    <button onClick={loadmore} className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Load Next {pages} schemes</button>
+                </div>
             </div>
+
         </div >
+
+
     )
 }
