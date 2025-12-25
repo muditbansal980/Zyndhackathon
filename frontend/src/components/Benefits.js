@@ -5,25 +5,30 @@
 import { useEffect, useState } from 'react';
 export default function Benefits() {
     const [benefitsData, setBenefitsData] = useState([]);
-    
+    const [disablebtn, setdisablebtn] = useState(false);
   //<-----------------------------Pagination-------------------------->  
     let [pagination, setpagination] = useState(0);
     const pages = 20;
     const currentpages = benefitsData.slice((pagination), (pagination + pages));
     const [placeholder1, setPlaceholder1] = useState([{ BasicFilter: ["Select Category", "Select Ministry"] }, { Location: ["Select State", "Select State Category"] }, { Eligibility: ["Select Gender", "Select Age"] }]);
     function loadmore() {
-        if (pagination >= 0) {
+        if (pagination < 980 && pagination >=0) {
             setpagination(pagination + pages);
+            setdisablebtn(false);
         }
-        else {
-            setpagination(pagination)
+        else if(pagination === 980){
+            setdisablebtn(true);
+            console.log(" disable button ")
         }
     }
     function loadprev() {
         if(pagination >0){
+            // setdisablebtn(false);
         setpagination(pagination - pages);
+        setdisablebtn(false);
         }
-        if (pagination = 0){
+        if (pagination === 0){
+            // setdisablebtn(true);
             console.log(" press next ")
         }
     }
@@ -50,6 +55,7 @@ export default function Benefits() {
         }
         fetchBenefits();
     }, [])
+
     function handlefilter(e) {
         if (e.target.id === "basic-filters") {
             setPlaceholder1([{ BasicFilter: ["Select Category", "Select Ministry"] }])
@@ -110,8 +116,8 @@ export default function Benefits() {
 {/* <--------------------------------------------------------Next and prev button for pagination--------------------------------------------> */}
 
                 <div className="flex gap-[10px] justify-center items-center mb-[20px] mt-[10px]">
-                    <button onClick={loadprev} className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Prev {pages} schemes</button>
-                    <button onClick={loadmore} className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Next {pages} schemes</button>
+                    <button onClick={loadprev} className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600" >Prev {pages} schemes</button>
+                    <button onClick={loadmore} id="loadmore" className={`${disablebtn?"bg-gray-500":"bg-blue-500 hover:bg-blue-600"} text-white px-[10px] py-[5px] rounded-[5px] `} disabled={disablebtn}>Next {pages} schemes</button>
                 </div>
             </div>
 
