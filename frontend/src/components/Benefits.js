@@ -102,7 +102,7 @@ export default function Benefits() {
                 <div className="cards grid gap-[20px] max-[640px]:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 auto-rows-auto w-[100%] p-[20px] ">
                     {currentpages.map((benefit, index) => (
                         <div key={index} className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[350px] max-[1675px]:max-w-[380px] min-h-[500px]">
-                            <div className="image h-[50%] overflow-y-hidden border-[1px] border-black text-black"><img className="h-full w-full object-cover" src={benefit.imageUrl} alt={benefit.title} /></div>
+                            
                             <div className="description ">
                                 <h1 className="text-[1.5rem] font-bold ">{benefit.title}</h1>
                                 <p>{benefit.about}</p>
