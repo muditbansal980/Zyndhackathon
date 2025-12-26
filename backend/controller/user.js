@@ -50,7 +50,8 @@ async function handlelogin(req, res) {
          res.cookie("uid", sessionId,{
             httpOnly: true,
             secure:true,
-            sameSite:"none"
+            sameSite:"none",
+            domain:".onrender.com"  // Adjust domain as needed
     });
         return res.status(200).json({ "message": "Login successful" });
 
