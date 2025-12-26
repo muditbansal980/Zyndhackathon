@@ -2,59 +2,73 @@
 // import Ayushman from "../assests/AyushmanBharatYojna.webp"
 // import Pradhanmantri from "../assests/Pradhanmantri.jpg"
 // import Mudrayojana from "../assests/Mudrayojana.jpg"
+import Loading from "./Loading/loading";
 import { useEffect, useState } from 'react';
 export default function Benefits() {
+    const [loading, setloading] = useState(false);
     const [benefitsData, setBenefitsData] = useState([]);
     const [disablebtn, setdisablebtn] = useState(false);
-  //<-----------------------------Pagination-------------------------->  
+    //<-----------------------------Pagination-------------------------->  
     let [pagination, setpagination] = useState(0);
     const pages = 20;
     const currentpages = benefitsData.slice((pagination), (pagination + pages));
     const [placeholder1, setPlaceholder1] = useState([{ BasicFilter: ["Select Category", "Select Ministry"] }, { Location: ["Select State", "Select State Category"] }, { Eligibility: ["Select Gender", "Select Age"] }]);
     function loadmore() {
-        if (pagination < 980 && pagination >=0) {
+        if (pagination < 980 && pagination >= 0) {
             setpagination(pagination + pages);
             setdisablebtn(false);
         }
-        else if(pagination === 980){
+        else if (pagination === 980) {
             setdisablebtn(true);
             console.log(" disable button ")
         }
     }
     function loadprev() {
-        if(pagination >0){
+        if (pagination > 0) {
             // setdisablebtn(false);
-        setpagination(pagination - pages);
-        setdisablebtn(false);
+            setpagination(pagination - pages);
+            setdisablebtn(false);
         }
-        if (pagination === 0){
+        if (pagination === 0) {
             // setdisablebtn(true);
             console.log(" press next ")
         }
     }
 
-//<-------------------------_Fetching data from backend----------------------------------->
+    //<-------------------------_Fetching data from backend----------------------------------->
 
     useEffect(() => {
-        async function fetchBenefits() {
-            const res = await fetch("https://zynd-hackathon.onrender.com/benefits/schemes", {
-                // const res = await fetch("http://localhost:9005/benefits/schemes", {
-                method: "GET",
-                credentials: 'include', // <--- this
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
 
-            )
-            if (res.status === 200) {
-                const data = await res.json();
-                // console.log("Benefits data:", data);
-                setBenefitsData(data);
+        async function fetchBenefits() {
+            try {
+                setloading(true)
+                const res = await fetch("https://zynd-hackathon.onrender.com/benefits/schemes", {
+                    // const res = await fetch("http://localhost:9005/benefits/schemes", {
+                    method: "GET",
+                    credentials: 'include', // <--- this
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+
+                if (res.status === 200) {
+                    const data = await res.json();
+                    // console.log("Benefits data:", data);
+                    setBenefitsData(data);
+                }
+
+
+            } catch (err) {
+                console.error("Error fetching benefits data:", err);
+            } finally {
+                setloading(false);
             }
         }
         fetchBenefits();
-    }, [])
+    }, []);
+    if (loading) {
+        return <Loading />;
+    }
 
     function handlefilter(e) {
         if (e.target.id === "basic-filters") {
@@ -62,11 +76,11 @@ export default function Benefits() {
         }
         else if (e.target.id === "location") {
             setPlaceholder1([{ Location: ["Select State", "Select State Category"] }])
-            
+
         }
         else if (e.target.id === "eligibility") {
             setPlaceholder1([{ Eligibility: ["Select Gender", "Select Age"] }])
-           
+
         }
     }
     // console.log("Benefitsdata huhuhuhu:-", benefitsData);
@@ -102,7 +116,11 @@ export default function Benefits() {
                 <div className="cards grid gap-[20px] max-[640px]:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 auto-rows-auto w-[100%] p-[20px] ">
                     {currentpages.map((benefit, index) => (
                         <div key={index} className="bg-white rounded-[8px] p-[10px] relative min-[1675px]:w-[350px] max-[1675px]:max-w-[380px] min-h-[300px]">
+<<<<<<< HEAD
                             
+=======
+                            {/* <div className="image h-[50%] overflow-y-hidden border-[1px] border-black text-black"><img className="h-full w-full object-cover" src={benefit.imageUrl} alt={benefit.title} /></div> */}
+>>>>>>> b4e4602 (added loading in the benefits)
                             <div className="description ">
                                 <h1 className="text-[1.5rem] font-bold ">{benefit.title}</h1>
                                 <p>{benefit.about}</p>
@@ -113,11 +131,11 @@ export default function Benefits() {
                         </div>
                     ))}
                 </div>
-{/* <--------------------------------------------------------Next and prev button for pagination--------------------------------------------> */}
+                {/* <--------------------------------------------------------Next and prev button for pagination--------------------------------------------> */}
 
                 <div className="flex gap-[10px] justify-center items-center mb-[20px] mt-[10px]">
                     <button onClick={loadprev} className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600" >Prev {pages} schemes</button>
-                    <button onClick={loadmore} id="loadmore" className={`${disablebtn?"bg-gray-500":"bg-blue-500 hover:bg-blue-600"} text-white px-[10px] py-[5px] rounded-[5px] `} disabled={disablebtn}>Next {pages} schemes</button>
+                    <button onClick={loadmore} id="loadmore" className={`${disablebtn ? "bg-gray-500" : "bg-blue-500 hover:bg-blue-600"} text-white px-[10px] py-[5px] rounded-[5px] `} disabled={disablebtn}>Next {pages} schemes</button>
                 </div>
             </div>
 
