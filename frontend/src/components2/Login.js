@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom"
 import { NavLink } from "react-router-dom"
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useEffect } from "react";
+import Loading from "../components/Loading/loading";
 export default function SignUp() {
     const [error, seterror] = useState(false)
     const [Errormsg, setErrormsg] = useState("");
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
+    const [loading, setloading] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
         setTimeout(() => {
@@ -16,31 +18,47 @@ export default function SignUp() {
     }, [error])
     async function handleSubmit(e) {
         e.preventDefault();
-        const res = await fetch("https://zynd-hackathon.onrender.com/user/login", {
-        // const res = await fetch("http://localhost:9005/user/login", {
-            method: "POST",
-            credentials: 'include', // <--- this
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password,
-                email: email,
-            })
+        try {
+            setloading(true)
+            // loading.current = true;
+            // if (loading.current) {
+            //     return <Loading />;
+            // }
+            const res = await fetch("https://zynd-hackathon.onrender.com/user/login", {
+            // const res = await fetch("http://localhost:9005/user/login", {
+                method: "POST",
+                credentials: 'include', // <--- this
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    email: email,
+                })
+            }
+            )
+            // await loading.current = false;
+            if (res.status === 200) {
+                navigate("/home")
+            }
+            else if (res.status === 401) {
+                seterror(true)
+                setErrormsg("User does not exist")
+            }
+            else if (res.status === 400) {
+                seterror(true)
+                setErrormsg("Please fill all the fields")
+            }
         }
-        )
-        if (res.status === 200) {
-            navigate("/home")
+        catch (err) {
+            console.error('Network/other error', err);
+        } finally {
+            setloading(false);
         }
-        else if (res.status === 401) {
-            seterror(true)
-            setErrormsg("User does not exist")
-        }
-        else if (res.status === 400) {
-            seterror(true)
-            setErrormsg("Please fill all the fields")
-        }
+    }
+    if (loading) {
+        return <Loading />;
     }
     // const [Display, setDisplay] = useState("");
     return (
@@ -54,7 +72,7 @@ export default function SignUp() {
                         <input name="email" type="email" value={email} onChange={(e) => setemail(e.target.value)} className="outline-none border-b-[1px] border-white text-[20px] p-[10px]" placeholder="Email" required />
                     </div>
                     <div className="flex justify-center">
-                        <button type="submit"  className="bg-[#898af3] p-[10px] rounded-[10px] hover:cursor-pointer">Login</button>
+                        <button type="submit" className="bg-[#898af3] p-[10px] rounded-[10px] hover:cursor-pointer">Login</button>
                     </div>
                 </form>
                 <p>Don't have an account? <NavLink to="/SignUp" className="underline">Sign Up</NavLink></p>
