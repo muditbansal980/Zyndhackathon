@@ -51,6 +51,7 @@ async function handlelogin(req, res) {
             httpOnly: true,
             secure:true,
             sameSite:"none",
+            path:"/",
             domain:".onrender.com"  // Adjust domain as needed
     });
         return res.status(200).json({ "message": "Login successful" });
