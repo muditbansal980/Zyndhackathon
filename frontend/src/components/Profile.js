@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading/loading";
+import {useNavigate} from "react-router-dom"
 export default function Profile() {
   const [profileData, setProfileData] = useState({});
   const [loading, setloading] = useState(true);
+  const Navigate = useNavigate()
   useEffect(() => {
     async function loadProfile() {
       try {
@@ -15,8 +17,8 @@ export default function Profile() {
         });
 
         if (postRes.status === 401) {
-          console.warn("Not authenticated");
-          setProfileData({});
+          Navigate("/")
+  //      setProfileData({});
           return;
         }
         if (postRes.status === 409) {
