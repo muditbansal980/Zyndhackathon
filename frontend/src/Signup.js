@@ -2,11 +2,13 @@
 import { NavLink } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "./components/Loading/loading";
 
 
 export default function SignUp() {
 
     const [Display, setDisplay] = useState("Choose Role");
+    const [loading, setloading] = useState(false);
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
@@ -18,6 +20,7 @@ export default function SignUp() {
 
     const handleSubmit = async (e) => {
         try {
+            setloading(true);
             e.preventDefault();
             const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
             // const res = await fetch("http://localhost:9005/user/signup", {
@@ -45,6 +48,8 @@ export default function SignUp() {
             }
         } catch (error) {
             console.error("Error during registration:", error);
+        } finally {
+            setloading(false);
         }
     };
     useEffect(() => {
@@ -52,6 +57,9 @@ export default function SignUp() {
             setError(false)
         }, 2000)
     }, [error])
+    if (loading) {
+        return <Loading />;
+    }
     return (
         <div className="flex flex-col justify-center items-center h-[100vh] w-[100vw] gap-[20px] ">
             <form onSubmit={handleSubmit}>
