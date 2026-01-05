@@ -3,6 +3,7 @@ import Batchicon from "../assests/batch-processing.png";
 import ZigZag from "../assests/line-ascendant-graphic-of-zigzag-arrow.png";
 import Applications from "../assests/resume.png";
 import searchicon from "../assests/search-icon.png";
+import {NavLink} from "react-router-dom";
 export default function Home() {
     return (
         <div className="w-[100%] p-[30px] flex flex-col justify-center">
@@ -21,27 +22,27 @@ export default function Home() {
                 </div>
             </div>
             <div className="cards-1">
-                <div className="bg-white rounded-[8px] p-[10px]  flex flex-col justify-center gap-[10px] m-[10px]">
+                <NavLink to="/MyApplications"><div className="bg-white rounded-[8px] p-[10px]  flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
                         <li className="w-[60px] mt-[10px] mb-[10px]"><img src={Applications} alt="Applications" /></li>
                         <li className="text-[20px] font-bold">0</li>
                         <li className="text-[20px] font-bold">Applications</li>
                     </ul>
-                </div>
-                <div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
+                </div></NavLink>
+                <NavLink to="/Benefits"><div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
                         <li className="w-[60px] mt-[10px] mb-[10px]"><img src={Batchicon} alt="Benefits" /></li>
                         <li className="text-[20px] font-bold">5</li>
                         <li className="text-[20px] font-bold">Benefits</li>
                     </ul>
-                </div>
-                <div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
+                </div></NavLink>
+                <NavLink to="/CheckEligibility"><div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
                         <li className="w-[60px] mt-[10px] mb-[10px]"><img src={ZigZag} alt="Eligibility" /></li>
                         <li className="text-[20px] font-bold">8</li>
                         <li className="text-[20px] font-bold">Eligibility Checked</li>
                     </ul>
-                </div>
+                </div></NavLink>
             </div>
             <div>
                 <div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
