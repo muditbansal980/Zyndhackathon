@@ -102,20 +102,20 @@ export default function Benefits() {
                 <div className="grid grid-rows-2 grid-cols-auto">
                     <div className="grid grid-cols-4 gap-[10px] mt-[10px] mb-[10px]">
                         <div id="basic-filters" onClick={handlefilter} className={`${Object.keys(placeholder1[0])[0] === "BasicFilter" ? " bg-blue-50 border-b-2 text-bg-blue-500 border-blue-500" : ""} flex justify-center items-center`}>
-                            <button id="basic-filters" type="button"  className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Basic Filter</button>
-                            <button id="basic-filters" type="button"  className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={filters}/></button>
+                            <button id="basic-filters" type="button"  className="flex justify-center items-center border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Basic Filter</button>
+                            <button id="basic-filters" type="button"  className="flex justify-center items-center border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={filters}/></button>
                         </div>
                         <div id="location" onClick={handlefilter} className={`${Object.keys(placeholder1[0])[0] === "Location" ? " bg-blue-50 border-b-2 text-bg-blue-500 border-blue-500" : ""} flex justify-center items-center`}>
-                            <button id="location" type="button"  className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Location</button>
-                            <button id="location" type="button"  className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={location}/></button>
+                            <button id="location" type="button"  className="flex justify-center items-center border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Location</button>
+                            <button id="location" type="button"  className="flex justify-center items-center border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={location}/></button>
                         </div>
                         <div id="eligibility" onClick={handlefilter} className={`${Object.keys(placeholder1[0])[0] === "Eligibility" ? " bg-blue-50 border-b-2 text-bg-blue-500 border-blue-500" : ""} flex justify-center items-center`}>
-                            <button id="eligibility" type="button"  className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Eligibility</button>
-                            <button id="eligibility" type="button"  className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={eligibility}/></button>
+                            <button id="eligibility" type="button"  className="flex justify-center items-center border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Eligibility</button>
+                            <button id="eligibility" type="button"  className="flex justify-center items-center border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={eligibility}/></button>
                         </div>
                         <div id="date" onClick={handlefilter} className={`${Object.keys(placeholder1[0])[0] === "Date" ? " bg-blue-50 border-b-2 text-bg-blue-500 border-blue-500" : ""} flex justify-center items-center`}>
-                            <button id="date" type="button"  className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Date</button>
-                            <button id="date" type="button"  className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={date}/></button>
+                            <button id="date" type="button"  className="flex justify-center items-center border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Date</button>
+                            <button id="date" type="button"  className="flex justify-center items-center border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={date}/></button>
                         </div>
                     </div><hr />
                     <div className="grid grid-cols-2">
