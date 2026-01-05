@@ -7,7 +7,7 @@ export default function Sidebar() {
     return (
         <div className="sidebar sm:hidden">
             <div className="logo hover:cursor-pointer transform hover:scale-110 transition-all duration-200">
-                <img onClick={()=> setDisplay(o=>!o)} className="w-[24px]" src={menu} alt="sidebar" />
+                <img  onClick={()=> setDisplay(o=>!o)} className="w-[24px] invert" src={menu} alt="sidebar" />
             </div>
             <div className={`items ${display ? '' : 'hidden'}`}>
                 <ul className="text-white">
