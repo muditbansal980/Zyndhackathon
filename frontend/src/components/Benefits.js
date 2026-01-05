@@ -2,8 +2,14 @@
 // import Ayushman from "../assests/AyushmanBharatYojna.webp"
 // import Pradhanmantri from "../assests/Pradhanmantri.jpg"
 // import Mudrayojana from "../assests/Mudrayojana.jpg"
+import filters from "../assests/filter.svg"
+import location from "../assests/location.svg"
+import eligibility from "../assests/eligibility.svg"
+import date from "../assests/date.svg"
 import Loading from "./Loading/loading";
 import { useEffect, useState } from 'react';
+import {Link} from "react-router-dom"
+import { NavLink } from "react-router-dom";
 export default function Benefits() {
     const [loading, setloading] = useState(false);
     const [benefitsData, setBenefitsData] = useState([]);
@@ -12,7 +18,7 @@ export default function Benefits() {
     let [pagination, setpagination] = useState(0);
     const pages = 20;
     const currentpages = benefitsData.slice((pagination), (pagination + pages));
-    const [placeholder1, setPlaceholder1] = useState([{ BasicFilter: ["Select Category", "Select Ministry"] }, { Location: ["Select State", "Select State Category"] }, { Eligibility: ["Select Gender", "Select Age"] }]);
+    const [placeholder1, setPlaceholder1] = useState([{ BasicFilter: ["Select Category", "Select Ministry"] }]);
     function loadmore() {
         if (pagination < 980 && pagination >= 0) {
             setpagination(pagination + pages);
@@ -83,6 +89,7 @@ export default function Benefits() {
 
         }
     }
+    
     return (
 
         <div className="flex flex-col items-center justify-center">
@@ -94,10 +101,22 @@ export default function Benefits() {
                 <input type="text" placeholder="Search Benefits..." className="outline-none w-[100%] p-[10px] text-[1rem] rounded-[8px] border-[1px] border-[gray]" />
                 <div className="grid grid-rows-2 grid-cols-auto">
                     <div className="grid grid-cols-4 gap-[10px] mt-[10px] mb-[10px]">
-                        <div id="basic-filters" className=""><button id="basic-filters" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px]">Basic Filter</button></div>
-                        <div id="location" className=" "><button id="location" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px]">Location</button></div>
-                        <div id="eligibility" className="hover:cursor-pointer"><button id="eligibility" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px]">Eligibility</button></div>
-                        <div id="date" className="hover:cursor-pointer"><button id="date" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px]">Date</button></div>
+                        <div id="basic-filters" className={`${Object.keys(placeholder1[0])[0] === "BasicFilter" ? " bg-blue-50 border-b-2 text-bg-blue-500 border-blue-500" : ""}`}>
+                            <button id="basic-filters" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Basic Filter</button>
+                            <button id="basic-filters" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={filters}/></button>
+                        </div>
+                        <div id="location" className={`${Object.keys(placeholder1[0])[0] === "Location" ? " bg-blue-50 border-b-2 text-bg-blue-500 border-blue-500" : ""}`}>
+                            <button id="location" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Location</button>
+                            <button id="location" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={location}/></button>
+                        </div>
+                        <div id="eligibility" className={`${Object.keys(placeholder1[0])[0] === "Eligibility" ? " bg-blue-50 border-b-2 text-bg-blue-500 border-blue-500" : ""}`}>
+                            <button id="eligibility" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Eligibility</button>
+                            <button id="eligibility" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={eligibility}/></button>
+                        </div>
+                        <div id="date" className={`${Object.keys(placeholder1[0])[0] === "Date" ? " bg-blue-50 border-b-2 text-bg-blue-500 border-blue-500" : ""}`}>
+                            <button id="date" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] hidden md:block">Date</button>
+                            <button id="date" type="button" onClick={handlefilter} className="border-none hover:cursor-pointer rounded-[5px] w-[100%] px-[10px] py-[5px] block md:hidden"><img src={date}/></button>
+                        </div>
                     </div><hr />
                     <div className="grid grid-cols-2">
                         <div>
@@ -121,7 +140,7 @@ export default function Benefits() {
                                 <p>{benefit.about}</p>
                             </div>
                             <div className="Apply flex justify-center items-center mt-[30px] absolute bottom-[10px] left-[37%] ">
-                                <button className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Apply Now</button>
+                            <button className="bg-blue-500 text-white px-[10px] py-[5px] rounded-[5px] hover:bg-blue-600">Apply Now</button>
                             </div>
                         </div>
                     ))}
