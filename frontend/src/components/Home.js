@@ -32,14 +32,14 @@ export default function Home() {
                 <NavLink to="/Benefits"><div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
                         <li className="w-[60px] mt-[10px] mb-[10px]"><img src={Batchicon} alt="Benefits" /></li>
-                        <li className="text-[20px] font-bold">5</li>
+                        <li className="text-[20px] font-bold">0</li>
                         <li className="text-[20px] font-bold">Benefits</li>
                     </ul>
                 </div></NavLink>
                 <NavLink to="/CheckEligibility"><div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
                         <li className="w-[60px] mt-[10px] mb-[10px]"><img src={ZigZag} alt="Eligibility" /></li>
-                        <li className="text-[20px] font-bold">8</li>
+                        <li className="text-[20px] font-bold">0</li>
                         <li className="text-[20px] font-bold">Eligibility Checked</li>
                     </ul>
                 </div></NavLink>
@@ -78,9 +78,9 @@ export default function Home() {
                                 Status
                             </div>
                         </div>
-                        <div className="flex justify-center items-center">
-                            <button className="bg-[purple] text-[white] p-[10px] rounded-[8px] mt-[10px]">View All Applications</button>
-                        </div>
+                        <NavLink to="/MyApplications"><div className="flex justify-center items-center hover:cursor-pointer">
+                            <button className="hover:cursor-pointer bg-[purple] text-[white] p-[10px] rounded-[8px] mt-[10px]">View All Applications</button>
+                        </div></NavLink>
                     </div>
                 </div>
             </div>
