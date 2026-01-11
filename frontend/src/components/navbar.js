@@ -30,7 +30,7 @@ export default function Navbar() {
                         Home
                     </NavLink></li>
                     {/* <Link to="/" className= "hover:cursor-pointer">Home</Link> */}
-                    <li className="transform hover:scale-110 border-b-[white] hover:border-b-[2px] transition-all duration-200"><NavLink to="/CheckEligibility" className={({ isActive }) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`}>Check Eligibility</NavLink></li>
+                    <li className="transform hover:scale-110 border-b-[white] hover:border-b-[2px] transition-all duration-200"><NavLink to="/Recommendations" className={({ isActive }) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`}>Recommendations</NavLink></li>
                     <li className="transform hover:scale-110 border-b-[white] hover:border-b-[2px] transition-all duration-200"><NavLink to="/Benefits" className={({ isActive }) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`}>Benefits</NavLink></li>
                     <li className="transform hover:scale-110 border-b-[white] hover:border-b-[2px] transition-all duration-200"><NavLink to="/InterpretLaw" className={({ isActive }) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`}>Interpretation of Law</NavLink></li>
                     <li className="transform hover:scale-110 border-b-[white] hover:border-b-[2px] transition-all duration-200"><NavLink to="/MyApplications" className={({ isActive }) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`}>My Applications</NavLink></li>

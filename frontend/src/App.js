@@ -1,6 +1,6 @@
 import Navbar from "./components/navbar"
 import Home from "./components/Home"
-import CheckEligibility from "./components/checkeligibility"
+import Recommendations from "./components/recommendations"
 import Benefits from "./components/Benefits"
 import MyApplications from "./components/MyApplications"
 import Profile from "./components/Profile"
@@ -20,8 +20,8 @@ function App() {
       element: <><Navbar /><Home /><Footer /></>
     },
     {
-      path: "/CheckEligibility",
-      element: <> <Navbar /><CheckEligibility /><Footer /></>
+      path: "/Recommendations",
+      element: <> <Navbar /><Recommendations /><Footer /></>
     },
     {
       path: "/Benefits",

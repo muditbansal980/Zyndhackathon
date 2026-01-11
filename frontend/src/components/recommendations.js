@@ -1,14 +1,14 @@
-import { useState } from "react"
+// import { useState } from "react"
 import "../css/checkeligibility.css"
-export default function CheckEligibility() {
-    const [select, setSelect] = useState("Select Benefits")
-    console.log(select)
+export default function Recommendations() {
+    // const [select, setSelect] = useState("Select Benefits")
+    // console.log(select)
     return (
         <div className=" overflw-y-scroll">
             <div className="flex justify-center items-center">
-                <h className="check-eligibility" >Check Eligibility</h>
+                <h className="recommendations" >Recommended for You</h>
             </div>
-            <form>
+            {/* <form>
                 <div className="m-[15px]">
                     <label className="text-white">Name:</label><br />
                     <input className="border-[2px] bg-[white] border-black p-[5px] outline-none" type="text" placeholder="Name" /><br />
@@ -30,7 +30,7 @@ export default function CheckEligibility() {
                 </select>
             </div>
             {/* Conditional Rendering */}
-            {select === "Scholarship" && (
+            {/* {select === "Scholarship" && (
                 <div>
                     <form >
                         <div className="m-[15px]">
@@ -51,8 +51,8 @@ export default function CheckEligibility() {
                         </div>
                     </form>
                 </div>
-            )}
-            {select === "Job" && (
+            )} */}
+            {/* {select === "Job" && (
                 <div>
                     <form>
                         <div className="m-[15px]">
@@ -77,8 +77,8 @@ export default function CheckEligibility() {
                         </div>
                     </form>
                 </div>
-            )}
-            {select === "Internship" && (
+            )} 
+            {/* {select === "Internship" && (
                 <div>
                     <form>
                         <div className="m-[15px]">
@@ -103,8 +103,8 @@ export default function CheckEligibility() {
                         </div>
                     </form>
                 </div>
-            )}
-            {select === "Government Schemes" && (
+            )} */}
+            {/* {select === "Government Schemes" && (
                 <div>
                     <form>
                         <div className="m-[15px]">
@@ -125,7 +125,7 @@ export default function CheckEligibility() {
                         </div>
                     </form>
                 </div>
-            )}
+            )}  */}
         </div>
     )
 }

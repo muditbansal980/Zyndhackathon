@@ -36,11 +36,11 @@ export default function Home() {
                         <li className="text-[20px] font-bold">Benefits</li>
                     </ul>
                 </div></NavLink>
-                <NavLink to="/CheckEligibility"><div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
+                <NavLink to="/Recommendations"><div className="bg-white rounded-[8px] p-[10px] flex flex-col justify-center gap-[10px] m-[10px]">
                     <ul>
-                        <li className="w-[60px] mt-[10px] mb-[10px]"><img src={ZigZag} alt="Eligibility" /></li>
+                        <li className="w-[60px] mt-[10px] mb-[10px]"><img src={ZigZag} alt="Recommendations" /></li>
                         <li className="text-[20px] font-bold">0</li>
-                        <li className="text-[20px] font-bold">Eligibility Checked</li>
+                        <li className="text-[20px] font-bold">Recommendations</li>
                     </ul>
                 </div></NavLink>
             </div>
