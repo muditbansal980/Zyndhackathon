@@ -4,7 +4,7 @@ import Recommendations from "./components/recommendations"
 import Benefits from "./components/Benefits"
 import MyApplications from "./components/MyApplications"
 import Profile from "./components/Profile"
-import InterpretLaw from "./components/InterpretLaw"
+import DocumentStorage from "./components/DocumentStorage"
 import Footer from "./components/Footer"
 import Signup from "./Signup"
 import Onboarding from "./components2/onboarding"
@@ -37,8 +37,8 @@ function App() {
       element: <><Navbar /><Profile /><Footer /></>
     },
     {
-      path: "/InterpretLaw",
-      element: <><Navbar /><InterpretLaw /><Footer /></>
+      path: "/DocumentStorage",
+      element: <><Navbar /><DocumentStorage /><Footer /></>
     },
     {
       path: "/signup",
