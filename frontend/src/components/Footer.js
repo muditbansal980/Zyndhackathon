@@ -4,15 +4,15 @@ import Twitter from "../assests/twitter.png";
 import { NavLink } from "react-router-dom";
 export default function Footer() {
     return (
-        <div className="footer bg-[oklch(0.21_0.06_258.54)] grid grid-cols-3 grid-rows-2 mt-[40px] p-[30px] w-[100%] ">
+        <div className="footer bg-[oklch(0.21_0.06_258.54)] grid grid-cols-2 sm:grid-cols-3 grid-rows-auto mt-[40px] p-[30px] w-[100%]">
             <div className="text-[white]">
                 <h1 className="font-bold">Let us help you</h1>    
                 <ul>
                     <NavLink to="/Home"><li className="hover:cursor-pointer">Home</li></NavLink>
                     <NavLink to="/Recommendations"><li className="hover:cursor-pointer">Recommendations</li></NavLink>
                     <NavLink to="/Benefits"><li className="hover:cursor-pointer">Benefits</li></NavLink>
-                    <NavLink to="/DocumentStorage"><li className="hover:cursor-pointer">My Documents</li></NavLink>
-                    <NavLink to="/MyApplications"><li className="hover:cursor-pointer">My Applications</li></NavLink>
+                    <NavLink to="/DocumentStorage"><li className="hover:cursor-pointer whitespace-nowrap">My Documents</li></NavLink>
+                    <NavLink to="/MyApplications"><li className="hover:cursor-pointer whitespace-nowrap">My Applications</li></NavLink>
                     <NavLink to="/Profile"><li className="hover:cursor-pointer">Profile</li></NavLink>
                 </ul>
             </div>
@@ -30,9 +30,9 @@ export default function Footer() {
                     <li className =" hover:cursor-pointer"><a href="https://www.mygov.in/">MyGov.in</a></li>
                 </ul>
             </div>
-            <div className="connect gap-[10px] col-span-3 justify-center items-center">
+            <div className="connect gap-[10px] col-span-2 sm:col-span-3 justify-center items-center">
                 <div className="flex justify-center items-center">
-                    <h1 className="text-[white] m-[10px] font-bold">Connect with us</h1>
+                    <h1 className="text-[white] m-[10px] font-bold whitespace-nowrap">Connect with us</h1>
                 </div>
                 <div className="flex gap-[10px] justify-center items-center">
                     <img className="w-[32px] hover:cursor-pointer " src={Instagram} alt="instagram" />
