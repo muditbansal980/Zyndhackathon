@@ -29,7 +29,8 @@ function App() {
     },
     {
       path: "/MyApplications",
-      element: <><Navbar /> <MyApplications /><Footer /></>
+      // element: <><Navbar /> <MyApplications /><Footer /></>
+      element: <><Navbar /> <MyApplications /></>
     },
     {
       path: "/Profile",
