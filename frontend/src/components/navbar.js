@@ -18,10 +18,10 @@ export default function Navbar() {
             <div>
                 <SearchBar />
             </div>
-            <nav className="elements hidden sm:block">
+            <nav className="elements hidden lg:block">
 
                 <ul className="flex gap-[30px] text-white items-center">
-                    <li className="hidden max-[1400px]:block">
+                    <li className="max-[1400px]:block">
                         <button className="flex gap-[5px] items-center">
                             <img src={searchicon} className="w-[24px]" alt="search" />
                             <h1>Ctrl K</h1>
