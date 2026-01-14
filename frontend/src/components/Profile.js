@@ -61,7 +61,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh]">
       <div className="bg-white p-[10px]">
         <div className="flex  justify-between">
           <div><h1>Profile</h1></div>
