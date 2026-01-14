@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export default function Sidebar() {  
     const [display, setDisplay]=useState(false);
     return (
-        <div className="sidebar sm:hidden">
+        <div className="sidebar lg:hidden">
             <div className="logo hover:cursor-pointer transform hover:scale-110 transition-all duration-200">
                 <img  onClick={()=> setDisplay(o=>!o)} className="w-[24px] invert" src={menu} alt="sidebar" />
             </div>
