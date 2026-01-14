@@ -21,7 +21,7 @@ export default function Sidebar() {
                         <NavLink className={({isActive}) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`} to="/Benefits">Benefits</NavLink>
                     </li>
                     <li className="hover:cursor-pointer transform hover:scale-110 transition-all duration-200">
-                        <NavLink className={({isActive}) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`} to="/InterpretLaw">Interpretation of Law</NavLink>
+                        <NavLink className={({isActive}) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`} to="/DocumentStorage">My Documents</NavLink>
                     </li>
                     <li className="hover:cursor-pointer transform hover:scale-110 transition-all duration-200">
                         <NavLink className={({isActive}) => `hover:cursor-pointer ${isActive ? "text-blue-400 font-bold" : "text-white"}`}   to="/MyApplications">My Applications</NavLink>
