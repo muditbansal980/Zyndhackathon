@@ -9,8 +9,9 @@ export default function Footer() {
                 <h1 className="font-bold">Let us help you</h1>    
                 <ul>
                     <NavLink to="/Home"><li className="hover:cursor-pointer">Home</li></NavLink>
-                    <NavLink to="/CheckEligibility"><li className="hover:cursor-pointer">Check Eligibility</li></NavLink>
+                    <NavLink to="/Recommendations"><li className="hover:cursor-pointer">Recommendations</li></NavLink>
                     <NavLink to="/Benefits"><li className="hover:cursor-pointer">Benefits</li></NavLink>
+                    <NavLink to="/DocumentStorage"><li className="hover:cursor-pointer">My Documents</li></NavLink>
                     <NavLink to="/MyApplications"><li className="hover:cursor-pointer">My Applications</li></NavLink>
                     <NavLink to="/Profile"><li className="hover:cursor-pointer">Profile</li></NavLink>
                 </ul>
