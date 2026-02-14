@@ -8,7 +8,10 @@ async function handlesignup(req, res) {
     const body = req.body;
     const user = await User.find()
     try {
-        if (user.some((user) => user.username !== body.username || user.email !== body.email)) {
+        if (user.some((user) => user.username === body.username || user.email === body.email)) {
+            res.status(409).json({ "message": "User already exist" });
+        }
+        else {
             await User.create({
                 username: body.username,
                 password: body.password,
@@ -19,12 +22,9 @@ async function handlesignup(req, res) {
             })
             res.status(200).json({ "message": "Signup successful" });
         }
-        else if (user.some((user) => user.username === body.username || user.email === body.email)) {
-            res.status(401).json({ "message": "User already exist" });
-        }
     }
     catch (error) {
-        res.json({ "message": "Error in login", error });
+        res.json({ "message": "Error in signup", error });
     }
 }
 async function handlelogin(req, res) {

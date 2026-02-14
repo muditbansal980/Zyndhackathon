@@ -22,8 +22,8 @@ export default function SignUp() {
         try {
             setloading(true);
             e.preventDefault();
-            const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
-            // const res = await fetch("http://localhost:9005/user/signup", {
+            // const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
+            const res = await fetch("http://localhost:9005/user/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -40,11 +40,13 @@ export default function SignUp() {
 
             // const data = await res.json();
             // console.log("data", data);
+            console.log("Response status code:",res.status)
             if (res.ok) {
                 navigate('/Home');
             }
-            else if (res.status === 401) {
+            else if (res.status === 409) {
                 setError(true);
+                // navigate("/");
             }
         } catch (error) {
             console.error("Error during registration:", error);
