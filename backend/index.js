@@ -27,6 +27,6 @@ app.use("/user",userouter)
 app.use("/userprofile",authmiddleware,profilerouter)
 app.use("/benefits",benefitsrouter)
 
-app.listen(9005, () => {
+app.listen(9005,"0.0.0.0", () => {
     console.log("http://localhost:9005")
 })
