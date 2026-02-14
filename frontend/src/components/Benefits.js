@@ -8,8 +8,8 @@ import eligibility from "../assests/eligibility.svg"
 import date from "../assests/date.svg"
 import Loading from "./Loading/loading";
 import { useEffect, useState } from 'react';
-import {Link} from "react-router-dom"
-import { NavLink } from "react-router-dom";
+// import {Link} from "react-router-dom"
+// import { NavLink } from "react-router-dom";
 export default function Benefits() {
     const [loading, setloading] = useState(false);
     const [benefitsData, setBenefitsData] = useState([]);

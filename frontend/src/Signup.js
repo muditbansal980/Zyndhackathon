@@ -22,8 +22,8 @@ export default function SignUp() {
         try {
             setloading(true);
             e.preventDefault();
-            // const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
-            const res = await fetch("http://localhost:9005/user/signup", {
+            const res = await fetch("https://zynd-hackathon.onrender.com/user/signup", {
+            // const res = await fetch("http://localhost:9005/user/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
