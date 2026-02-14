@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom"
 export default function Profile() {
   const [profileData, setProfileData] = useState({});
   const [loading, setloading] = useState(true);
-  const Navigate = useNavigate()
+  const navigate = useNavigate()
   useEffect(() => {
     async function loadProfile() {
       try {
@@ -17,7 +17,7 @@ export default function Profile() {
         });
 
         if (postRes.status === 401) {
-          Navigate("/")
+          navigate("/")
   //      setProfileData({});
           return;
         }

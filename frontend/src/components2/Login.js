@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { NavLink } from "react-router-dom"
-import { useState, useRef } from "react";
+import { useState} from "react";
 import { useEffect } from "react";
 import Loading from "../components/Loading/loading";
 export default function SignUp() {
