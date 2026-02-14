@@ -55,7 +55,7 @@ export default function Profile() {
       }
     }
     loadProfile(); 
-  }, []);
+  }, [navigate]);
   if (loading) {
     return <Loading />;
   }
