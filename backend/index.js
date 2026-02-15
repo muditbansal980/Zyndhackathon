@@ -26,7 +26,9 @@ connectiondb(process.env.MONGO_URL).then(()=>console.log("MONGODB CONENCTED")).c
 app.use("/user",userouter)
 app.use("/userprofile",authmiddleware,profilerouter)
 app.use("/benefits",benefitsrouter)
-
-app.listen(9005,"0.0.0.0", () => {
+app.use("/",(req,res)=>{
+  res.send("Server is running with nginx")
+})
+app.listen(9005, '0.0.0.0',() => {
     console.log("http://localhost:9005")
 })
